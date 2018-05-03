@@ -35,6 +35,6 @@ host that has Docker installed. Afterwards, invocation of any of the binaries in
 out *clusterdock* actions can be done using the `clusterdock_run` command. As an example, assuming
 Docker is already installed and the working directory is the root of this Git repository:
 ```
-source ./clusterdock.sh
+source /dev/stdin <<< "$(curl -sL https://raw.githubusercontent.com/evidnet/clusterdock/master/clusterdock.sh)"
 clusterdock_run ./bin/start_cluster cdh --help
 ```
