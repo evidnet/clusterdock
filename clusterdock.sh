@@ -1,6 +1,3 @@
-# Copyright (C) 2012 - 2018 Cloudera, Inc.
-# All Rights Reserved.
-
 #!/usr/bin/env bash
 
 # This helper script is designed to be sourced, at which time its functions are made available
@@ -29,7 +26,7 @@ clusterdock_run() {
   #                               make available to users
 
   if [ -z "${CLUSTERDOCK_IMAGE}" ]; then
-    local CONSTANTS_CONFIG_URL='https://raw.githubusercontent.com/cloudera/clusterdock/master/clusterdock/constants.cfg'
+    local CONSTANTS_CONFIG_URL='https://raw.githubusercontent.com/evidnet/clusterdock/master/clusterdock/constants.cfg'
 
     # awk -F argument allows for any number of spaces around equal sign.
     local DOCKER_REGISTRY_URL=$(curl -s "${CONSTANTS_CONFIG_URL}" \
@@ -126,8 +123,8 @@ clusterdock_ssh() {
   fi
 
   local ID
-  for ID in $(docker ps -qa); do
-    if [ "$(docker inspect --format '{{.Config.Hostname}}' ${ID})" = "${NODE}" ]; then
+  for ID in $(sudo docker ps -qa); do
+    if [ "$(sudo docker inspect --format '{{.Config.Hostname}}' ${ID})" = "${NODE}" ]; then
       break
     fi
   done
